@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   StyledHeaderWrapper,
   StyledHeaderNav,
   StyledHeaderNavItem,
   StyledHeaderActions,
   StyledHeaderButton,
-} from './Header.styled';
+} from "./Header.styled";
 
 const navItems = [
-  { label: 'Home', href: '#' },
-  { label: 'Marketplace', href: '#' },
-  { label: 'Collections', href: '#' },
-  { label: 'About', href: '#' },
+  { label: "Home", href: "#" },
+  { label: "Marketplace", href: "#" },
+  { label: "Collections", href: "#" },
+  { label: "About", href: "#" },
 ];
 
 const Header: React.FC = () => {
-  const [selected, setSelected] = useState('Home');
+  const [selected, setSelected] = useState("Home");
   return (
     <StyledHeaderWrapper>
       <StyledHeaderNav>
@@ -23,7 +23,7 @@ const Header: React.FC = () => {
           <StyledHeaderNavItem
             key={item.label}
             href={item.href}
-            className={selected === item.label ? 'selected' : ''}
+            className={selected === item.label ? "selected" : ""}
             onClick={() => setSelected(item.label)}
           >
             {item.label}

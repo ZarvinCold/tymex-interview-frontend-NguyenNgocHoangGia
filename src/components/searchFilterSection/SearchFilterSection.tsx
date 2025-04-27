@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
+import React, { useState } from "react";
+import { Row, Col } from "antd";
+import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import {
   GradientButton,
   GradientSlider,
@@ -9,20 +9,20 @@ import {
   ButtonRow,
   TransparentInput,
   TransparentSelect,
-} from './SearchFilterSection.styled';
+} from "./SearchFilterSection.styled";
 
 const { Option } = TransparentSelect;
 
 const SearchFilterSection: React.FC = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [price, setPrice] = useState<number[]>([0, 100]);
   const [tier, setTier] = useState<{ value: string; label: string }[]>();
-  const [theme, setTheme] = useState<string>('');
-  const [time, setTime] = useState<string>('');
-  const [priceSort, setPriceSort] = useState<string>('');
+  const [theme, setTheme] = useState<string>("");
+  const [time, setTime] = useState<string>("");
+  const [priceSort, setPriceSort] = useState<string>("");
 
   const handleReset = () => {
-    setSearch('');
+    setSearch("");
     setPrice([0, 100]);
     // setTier(undefined);
     // setTheme(undefined);
@@ -56,8 +56,8 @@ const SearchFilterSection: React.FC = () => {
           placeholder="Select tier"
           value={tier}
           onChange={setTier}
-          dropdownStyle={{ background: 'transparent' }}
-          style={{ width: '100%' }}
+          dropdownStyle={{ background: "transparent" }}
+          style={{ width: "100%" }}
         >
           <Option value="bronze">Bronze</Option>
           <Option value="silver">Silver</Option>
@@ -70,7 +70,7 @@ const SearchFilterSection: React.FC = () => {
           placeholder="Select theme"
           value={theme}
           onChange={setTheme}
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
         >
           <Option value="light">Light</Option>
           <Option value="dark">Dark</Option>
@@ -84,7 +84,7 @@ const SearchFilterSection: React.FC = () => {
             placeholder="Select time"
             value={time}
             onChange={setTime}
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
           >
             <Option value="24h">24h</Option>
             <Option value="7d">7d</Option>
@@ -97,7 +97,7 @@ const SearchFilterSection: React.FC = () => {
             placeholder="Sort by price"
             value={priceSort}
             onChange={setPriceSort}
-            style={{ width: '100%' }}
+            style={{ width: "100%" }}
           >
             <Option value="asc">Low to High</Option>
             <Option value="desc">High to Low</Option>

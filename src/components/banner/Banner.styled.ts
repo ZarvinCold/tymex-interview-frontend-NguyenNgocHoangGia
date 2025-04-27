@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { StyledMPText } from '../components.styled';
+import styled from "styled-components";
+import { StyledMPText } from "../components.styled";
 
 export const StyledBannerWrapper = styled.div<{ banner: string }>`
   width: 100%;
@@ -8,7 +8,7 @@ export const StyledBannerWrapper = styled.div<{ banner: string }>`
   background: url(${(props) => props.banner}) center/cover no-repeat;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -28,7 +28,7 @@ export const StyledBannerTitle = styled.h1`
 `;
 
 export const StyledBannerBottom = styled.div<{ bannerBottom: string }>`
-  background: url(${(props) => props.bannerBottom}) center/contain no-repeat;
+  background: url(${(props) => props.bannerBottom}) center/contain repeat;
   background-size: auto 100%;
   position: absolute;
   bottom: 0;

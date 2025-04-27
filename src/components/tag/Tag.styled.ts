@@ -1,5 +1,5 @@
-import { Tag } from 'antd';
-import { styled } from 'styled-components';
+import { Tag } from "antd";
+import { styled } from "styled-components";
 
 export const StyledTag = styled(Tag)<{ $selected: boolean }>`
   background: linear-gradient(
@@ -16,15 +16,16 @@ export const StyledTag = styled(Tag)<{ $selected: boolean }>`
   display: flex;
   align-items: center;
   padding: 8px 12px;
+  margin-right: 0;
 `;
 
 export const StyledTagListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 20px;
   max-width: 100%;
   overflow: hidden;
-  position: relative;
+  margin-bottom: 20px;
 `;
 
 export const StyledCollapseButton = styled.button`
@@ -32,8 +33,7 @@ export const StyledCollapseButton = styled.button`
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 0 12px;
-  height: 32px;
+  padding: 8px 12px;
   font-weight: 600;
   margin-left: 8px;
   cursor: pointer;

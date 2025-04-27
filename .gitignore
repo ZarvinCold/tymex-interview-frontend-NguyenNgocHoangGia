@@ -22,3 +22,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+mock_server/__pycache__/
+mock_server/venv/
+mock_server/.env
+get-pip.py
+*.pyc

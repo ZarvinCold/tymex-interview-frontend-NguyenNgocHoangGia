@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Button, Slider, Input, Select, SelectProps } from 'antd';
+import styled from "styled-components";
+import { Button, Slider, Input, Select, SelectProps } from "antd";
 
 export const GradientButton = styled(Button)`
   background: linear-gradient(91.47deg, #da458f -6%, #da34dd 113.05%);

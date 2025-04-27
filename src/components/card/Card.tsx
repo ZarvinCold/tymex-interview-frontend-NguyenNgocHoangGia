@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyledCardWrapper,
   StyledCardImage,
@@ -6,16 +6,18 @@ import {
   StyledCardCategory,
   StyledCardLike,
   StyledCardContent,
-  StyledCardTitleRow,
   StyledCardTitle,
   StyledCardPrice,
   StyledCardCreatorRow,
   StyledCardAvatar,
   StyledCardCreatorName,
-} from './Card.styled';
+} from "./Card.styled";
+
+import ethereumIcon from "assets/logos_ethereum.svg";
+import { StyledMPFLex } from "components/components.styled";
 
 export interface CardProps {
-  image: string;
+  imageId: number;
   title: string;
   category: string;
   price: string;
@@ -25,7 +27,7 @@ export interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
-  image,
+  imageId,
   title,
   category,
   price,
@@ -33,24 +35,29 @@ const Card: React.FC<CardProps> = ({
   creatorAvatar,
   liked,
 }) => {
+  // Determine NFT image file name based on imageId (image prop)
+  const nftImageIndex = ((imageId - 1) % 5) + 1; // 1,5,9... => 1; 2,6,10... => 2; etc.
+  const nftImageSrc = `/src/assets/NFT-character-${nftImageIndex}.png`;
   return (
     <StyledCardWrapper>
       <StyledCardImage>
-        <StyledCardPicture src={image} alt={title} />
+        <StyledCardPicture src={nftImageSrc} alt={title} />
         <StyledCardCategory>{category}</StyledCardCategory>
         <StyledCardLike>
-          {/* Replace with heart icon SVG or component */}
           <span role="img" aria-label="like">
-            {liked ? '❤️' : '🤍'}
+            {liked ? "❤️" : "🤍"}
           </span>
         </StyledCardLike>
       </StyledCardImage>
       <StyledCardContent>
-        <StyledCardTitleRow>
+        <StyledMPFLex justify="space-between" $fullWidth>
           <StyledCardTitle>{title}</StyledCardTitle>
-          <StyledCardPrice>{price}</StyledCardPrice>
-        </StyledCardTitleRow>
-        <StyledCardCreatorRow>
+          <StyledMPFLex>
+            <img src={ethereumIcon} alt="Ethereum" width={16} height={16} />
+            <StyledCardPrice>{price} ETH</StyledCardPrice>
+          </StyledMPFLex>
+        </StyledMPFLex>
+        <StyledCardCreatorRow gap={"middle"} align="center">
           <StyledCardAvatar src={creatorAvatar} alt={creator} />
           <StyledCardCreatorName>{creator}</StyledCardCreatorName>
         </StyledCardCreatorRow>

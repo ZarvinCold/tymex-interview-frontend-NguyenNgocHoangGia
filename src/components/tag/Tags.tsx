@@ -1,11 +1,9 @@
-import React, { useState, useRef } from 'react';
-import { Tag } from 'antd';
-import styled from 'styled-components';
+import React, { useState } from "react";
 import {
   StyledTagListWrapper,
   StyledTag,
   StyledCollapseButton,
-} from './Tag.styled';
+} from "./Tag.styled";
 
 interface TagsProps {
   tags: string[];
@@ -30,7 +28,7 @@ const Tags: React.FC<TagsProps> = ({
       newSelected = [...selected, tag];
     }
     setSelected(newSelected);
-    onChange && onChange(newSelected);
+    onChange?.(newSelected);
   };
   const visibleTags = collapsed ? tags.slice(0, maxVisible) : tags;
   const hiddenCount = tags.length - visibleTags.length;

@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { StyledMPText } from 'components';
+import styled from "styled-components";
+import { StyledMPText } from "components";
 
 export const StyledHeaderWrapper = styled.header`
   width: 100%;
@@ -30,7 +30,7 @@ export const StyledHeaderNav = styled.nav`
   gap: 32px;
 `;
 
-export const StyledHeaderNavItem = styled(StyledMPText).attrs({ as: 'a' })`
+export const StyledHeaderNavItem = styled(StyledMPText).attrs({ as: "a" })`
   font-size: ${({ theme }) => theme.typography.h4};
   color: ${({ theme }) => theme.colors.textLight};
   font-weight: ${({ theme }) => theme.typography.weightMedium};
@@ -43,20 +43,28 @@ export const StyledHeaderNavItem = styled(StyledMPText).attrs({ as: 'a' })`
     opacity: 0.85;
   }
   &.selected {
-    background: linear-gradient(90deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
+    background: linear-gradient(
+      90deg,
+      ${({ theme }) => theme.colors.primary},
+      ${({ theme }) => theme.colors.secondary}
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
   }
   &.selected::after {
-    content: '';
+    content: "";
     display: block;
     margin: 4px auto 0 auto;
     width: 60%;
     height: 2px;
     border-radius: 1px;
-    background: linear-gradient(90deg, ${({ theme }) => theme.colors.primary}, ${({ theme }) => theme.colors.secondary});
+    background: linear-gradient(
+      90deg,
+      ${({ theme }) => theme.colors.primary},
+      ${({ theme }) => theme.colors.secondary}
+    );
   }
 `;
 

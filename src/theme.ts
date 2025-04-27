@@ -16,7 +16,7 @@ const theme: DefaultTheme = {
     shadow: "0 2px 12px rgba(0, 0, 0, 0.06)",
     overlay: "rgba(0, 0, 0, 0.7)",
     categoryBg: "rgba(49, 59, 69, 0.5)",
-    price: "#fff"
+    price: "#fff",
   },
   typography: {
     fontFamily: "'Roboto', 'Helvetica Neue', Arial, 'sans-serif'",
@@ -31,8 +31,8 @@ const theme: DefaultTheme = {
     weightBold: 700,
     weightSemiBold: 600,
     weightMedium: 500,
-    weightRegular: 400
-  }
+    weightRegular: 400,
+  },
 };
 
 export default theme;

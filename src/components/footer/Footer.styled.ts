@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledFooterWrapper = styled.footer`
   background: #222;
@@ -152,14 +152,14 @@ export const StyledFooterLabel = styled.span`
 `;
 
 export const StyledFooterNav = styled.div`
-display: flex;
-text-align: left;
+  display: flex;
+  text-align: left;
 `;
 export const StyledFooterContact = styled.div`
-display: flex;
-flex-direction: column;
-gap: 36px;
-text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  text-align: left;
 `;
 export const StyledFooterContactIcon = styled.div``;
 export const StyledFooterBottom = styled.div``;

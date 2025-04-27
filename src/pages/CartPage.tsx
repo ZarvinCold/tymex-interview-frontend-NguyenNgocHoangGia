@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const CartPage: React.FC = () => {
   return <div>Cart Page</div>;
