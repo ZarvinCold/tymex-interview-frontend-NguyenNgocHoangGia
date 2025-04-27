@@ -1,6 +1,14 @@
+import {Banner, Footer, Header} from 'components';
+import OverviewPage from 'pages/overview';
+
 function App() {
   return (
-    <div>Hello World!</div>
+    <div>
+      <Header />
+      <Banner />
+      <OverviewPage />
+      <Footer />
+    </div>
   );
 }
 
