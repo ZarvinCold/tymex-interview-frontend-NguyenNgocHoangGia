@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   StyledFooterWrapper,
   StyledFooterTop,
@@ -14,9 +14,9 @@ import {
   StyledFooterSubscribeButton,
   StyledFooterCopyright,
   StyledFooterBottomLinks,
-} from './Footer.styled';
+} from "./Footer.styled";
 
-import { StyledMPDivider, StyledMPFLex } from 'components';
+import { StyledMPDivider, StyledMPFLex } from "components";
 
 const Footer: React.FC = () => {
   return (
@@ -61,16 +61,16 @@ const Footer: React.FC = () => {
           <StyledFooterNavTitle>
             Subcribe to receive our latest update
           </StyledFooterNavTitle>
-          <StyledMPFLex justify='space-between'>
-          <StyledFooterSubscribeInput placeholder="Your email address" />
-          <StyledFooterSubscribeButton>Subcribe</StyledFooterSubscribeButton>
+          <StyledMPFLex justify="space-between" $fullWidth>
+            <StyledFooterSubscribeInput placeholder="Your email address" />
+            <StyledFooterSubscribeButton>Subcribe</StyledFooterSubscribeButton>
           </StyledMPFLex>
         </StyledFooterSubscribe>
       </StyledFooterTop>
 
       <StyledMPDivider />
 
-      <StyledMPFLex justify='space-between'>
+      <StyledMPFLex justify="space-between" $fullWidth>
         <StyledFooterCopyright>
           ©2023 Tyme - Edit. All Rights reserved.
         </StyledFooterCopyright>

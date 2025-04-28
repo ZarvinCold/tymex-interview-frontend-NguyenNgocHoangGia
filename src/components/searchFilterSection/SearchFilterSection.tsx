@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
-import { SearchOutlined, ReloadOutlined } from '@ant-design/icons';
+import React from "react";
+
+import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import {
   GradientButton,
   GradientSlider,
@@ -9,26 +9,24 @@ import {
   ButtonRow,
   TransparentInput,
   TransparentSelect,
-} from './SearchFilterSection.styled';
+} from "./SearchFilterSection.styled";
+import { useSearchFilterStore } from "../../store/useSearchFilterStore";
+import TierSelect from "./TierSelect";
+import ThemeSelect from "./ThemeSelect";
 
 const { Option } = TransparentSelect;
 
 const SearchFilterSection: React.FC = () => {
-  const [search, setSearch] = useState('');
-  const [price, setPrice] = useState<number[]>([0, 100]);
-  const [tier, setTier] = useState<{ value: string; label: string }[]>();
-  const [theme, setTheme] = useState<string>('');
-  const [time, setTime] = useState<string>('');
-  const [priceSort, setPriceSort] = useState<string>('');
+  const search = useSearchFilterStore((state) => state.search);
 
-  const handleReset = () => {
-    setSearch('');
-    setPrice([0, 100]);
-    // setTier(undefined);
-    // setTheme(undefined);
-    // setTime(undefined);
-    // setPriceSort(undefined);
-  };
+  const price = useSearchFilterStore((state) => state.price);
+
+  const time = useSearchFilterStore((state) => state.time);
+
+  const priceSort = useSearchFilterStore((state) => state.priceSort);
+
+  const setOptions = useSearchFilterStore((state) => state.setOptions);
+  const handleReset = useSearchFilterStore((state) => state.reset);
 
   return (
     <SectionWrapper>
@@ -37,9 +35,10 @@ const SearchFilterSection: React.FC = () => {
           placeholder="Search..."
           prefix={<SearchOutlined />}
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => setOptions({search: e.target.value})}
         />
       </div>
+
       <div>
         <Label>Price Range</Label>
         <GradientSlider
@@ -47,70 +46,41 @@ const SearchFilterSection: React.FC = () => {
           min={0}
           max={100}
           value={price}
-          onChange={setPrice}
+          onChange={(price) => setOptions({price})}
         />
       </div>
+
+      <TierSelect />
+      <ThemeSelect />
+      
       <div>
-        <Label>Tier</Label>
+        <Label>Time</Label>
         <TransparentSelect
-          placeholder="Select tier"
-          value={tier}
-          onChange={setTier}
-          dropdownStyle={{ background: 'transparent' }}
-          style={{ width: '100%' }}
+          placeholder="Select time"
+          value={time}
+          onChange={(time) => setOptions({time})}
         >
-          <Option value="bronze">Bronze</Option>
-          <Option value="silver">Silver</Option>
-          <Option value="gold">Gold</Option>
+          <Option value="">All</Option>
+          <Option value="24h">Last 24 hours</Option>
+          <Option value="7d">Last 7 days</Option>
+          <Option value="30d">Last 30 days</Option>
         </TransparentSelect>
       </div>
       <div>
-        <Label>Theme</Label>
+        <Label>Sort by Price</Label>
         <TransparentSelect
-          placeholder="Select theme"
-          value={theme}
-          onChange={setTheme}
-          style={{ width: '100%' }}
+          placeholder="Sort by price"
+          value={priceSort}
+          onChange={(priceSort) => setOptions({priceSort})}
         >
-          <Option value="light">Light</Option>
-          <Option value="dark">Dark</Option>
-          <Option value="colorful">Colorful</Option>
+          <Option value="">None</Option>
+          <Option value="asc">Low to High</Option>
+          <Option value="desc">High to Low</Option>
         </TransparentSelect>
       </div>
-      <Row gutter={12}>
-        <Col span={12}>
-          <Label>Time</Label>
-          <TransparentSelect
-            placeholder="Select time"
-            value={time}
-            onChange={setTime}
-            style={{ width: '100%' }}
-          >
-            <Option value="24h">24h</Option>
-            <Option value="7d">7d</Option>
-            <Option value="30d">30d</Option>
-          </TransparentSelect>
-        </Col>
-        <Col span={12}>
-          <Label>Price</Label>
-          <TransparentSelect
-            placeholder="Sort by price"
-            value={priceSort}
-            onChange={setPriceSort}
-            style={{ width: '100%' }}
-          >
-            <Option value="asc">Low to High</Option>
-            <Option value="desc">High to Low</Option>
-          </TransparentSelect>
-        </Col>
-      </Row>
       <ButtonRow>
-        <GradientButton
-          icon={<ReloadOutlined />}
-          onClick={handleReset}
-          type="default"
-        >
-          Reset Filter
+        <GradientButton icon={<ReloadOutlined />} onClick={handleReset}>
+          Reset
         </GradientButton>
         <GradientButton type="primary">Search</GradientButton>
       </ButtonRow>

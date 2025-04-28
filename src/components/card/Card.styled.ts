@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import { StyledMPFLex } from "components/components.styled";
+import styled from "styled-components";
 
 export const StyledCardWrapper = styled.div`
   background: ${({ theme }) => theme.colors.cardBg};
@@ -7,20 +8,20 @@ export const StyledCardWrapper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 16px;
   width: 100%;
-  max-width: 260px;
-  gap: 16px;
+  height: 365px;
 `;
 
 export const StyledCardImage = styled.div`
-  width: 219px;
-  height: 219px;
+  width: 100%;
+  height: 235px;
   border-radius: 4px;
   background: ${({ theme }) => theme.colors.cardGradient};
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: flex-end;
   position: relative;
   overflow: hidden;
@@ -29,7 +30,9 @@ export const StyledCardImage = styled.div`
 export const StyledCardPicture = styled.img`
   width: 100%;
   height: 100%;
+  padding-top: 28px;
   object-fit: cover;
+  object-position: top;
   border-radius: 4px;
 `;
 
@@ -87,17 +90,18 @@ export const StyledCardPrice = styled.div`
   color: ${({ theme }) => theme.colors.price};
 `;
 
-export const StyledCardCreatorRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
+export const StyledCardCreatorRow = styled(StyledMPFLex).attrs({
+  $fullWidth: true,
+})`
+  margin-top: 12px;
 `;
 
 export const StyledCardAvatar = styled.img`
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   object-fit: cover;
+  background: ${({ theme }) => theme.colors.background};
 `;
 
 export const StyledCardCreatorName = styled.span`

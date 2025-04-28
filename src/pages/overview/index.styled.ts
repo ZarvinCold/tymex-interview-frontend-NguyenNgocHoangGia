@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
 export const StyledOverviewPageWrapper = styled.div<{
   background: string;
@@ -10,13 +10,13 @@ export const StyledOverviewPageWrapper = styled.div<{
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 4%;
+  padding: 4% 6%;
   gap: 100px;
   position: relative;
   z-index: 0;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -36,4 +36,10 @@ export const StyledContentWrapper = styled.div`
   width: 100%;
   color: ${({ theme }) => theme.colors.text};
   font-family: ${({ theme }) => theme.typography.fontFamily};
+`;
+
+export const StyledCardsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 44px;
 `;
