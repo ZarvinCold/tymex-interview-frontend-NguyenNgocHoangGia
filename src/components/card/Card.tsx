@@ -26,6 +26,11 @@ export interface CardProps {
   liked?: boolean;
 }
 
+const getNFTCharacterImage = (imageId: number) => {
+  const nftImageIndex = ((imageId - 1) % 5) + 1;
+  return `/src/assets/NFT-character-${nftImageIndex}.png`;
+};
+
 const Card: React.FC<CardProps> = ({
   imageId,
   title,
@@ -35,13 +40,11 @@ const Card: React.FC<CardProps> = ({
   creatorAvatar,
   liked,
 }) => {
-  // Determine NFT image file name based on imageId (image prop)
-  const nftImageIndex = ((imageId - 1) % 5) + 1; // 1,5,9... => 1; 2,6,10... => 2; etc.
-  const nftImageSrc = `/src/assets/NFT-character-${nftImageIndex}.png`;
+  
   return (
     <StyledCardWrapper>
       <StyledCardImage>
-        <StyledCardPicture src={nftImageSrc} alt={title} />
+        <StyledCardPicture src={getNFTCharacterImage(imageId)} alt={title} />
         <StyledCardCategory>{category}</StyledCardCategory>
         <StyledCardLike>
           <span role="img" aria-label="like">

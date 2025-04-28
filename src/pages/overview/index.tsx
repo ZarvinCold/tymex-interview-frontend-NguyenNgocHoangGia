@@ -1,5 +1,5 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
+import React, { Fragment } from "react";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { Tags, Card, SearchFilterSection } from "components";
 import CardSkeleton from "components/card/CardSkeleton";
 import {
@@ -10,7 +10,7 @@ import {
 import background from "assets/body-background.png";
 import bodyBottom from "assets/body-bottom.svg";
 import { fetchProducts } from "services/product";
-import { IProduct } from "types";
+
 const mockTags = [
   "Art",
   "Music",
@@ -35,15 +35,25 @@ const mockTags = [
 ];
 
 const OverviewPage: React.FC = () => {
+
   const {
-    data: products,
+    data,
     isLoading,
     isError,
-  } = useQuery({
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ["products"],
     queryFn: fetchProducts,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage, allPages) => {
+      if (lastPage.page === lastPage.totalPages) return undefined;
+      return allPages.length + 1;
+    },
     staleTime: Infinity,
   });
+console.log(data?.pages);
 
   return (
     <StyledOverviewPageWrapper
@@ -62,19 +72,28 @@ const OverviewPage: React.FC = () => {
         )}
         {isError && <div>Failed to load products.</div>}
         <StyledCardsWrapper>
-          {products &&
-            products.map((product: IProduct) => (
-              <Card
-                key={product.id}
-                imageId={product.imageId}
-                title={product.title}
-                category={product.category || ""}
-                price={product.price + "" || ""}
-                creator={product.author.email || ""}
-                creatorAvatar={product.author.avatar || ""}
-              />
-            ))}
+          {data?.pages?.map((group, i) => (
+            <Fragment key={i}>
+              {group.products?.map((product) =><Card
+              key={product.id}
+              imageId={product.imageId}
+              title={product.title}
+              category={product.category || ""}
+              price={product.price + "" || ""}
+              creator={product.author.email || ""}
+              creatorAvatar={product.author.avatar || ""}
+            /> )}
+            </Fragment>
+            
+          ))}
         </StyledCardsWrapper>
+        {hasNextPage && (
+          <div style={{ textAlign: "center", margin: "24px 0" }}>
+            <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage} style={{ padding: "12px 32px", borderRadius: 8, background: "#6366f1", color: "#fff", border: "none", fontWeight: 600, fontSize: 16, cursor: "pointer" }}>
+              {isFetchingNextPage ? "Loading..." : "View more"}
+            </button>
+          </div>
+        )}
       </StyledContentWrapper>
     </StyledOverviewPageWrapper>
   );

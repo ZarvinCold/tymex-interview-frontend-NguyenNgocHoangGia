@@ -1,8 +1,15 @@
 import { fetchData } from "services/restClient";
-import { IProduct } from "types";
+import { IProduct, Pageable } from "types";
 
-const BASE_URL = import.meta.env.VITE_API_URL + "/api";
 
-export const fetchProducts = async () => {
-  return await fetchData<IProduct[]>(`${BASE_URL}/products`);
+type ProductRequestParams = {
+  pageParam?: number;
+  limit?: number;
+}
+
+type ProductResponse = Pageable<IProduct>
+
+export const fetchProducts = async ({ pageParam = 1, limit = 12 }: ProductRequestParams) => {
+  const res = await fetchData<ProductResponse>(`/products?_page=${pageParam}&_limit=${limit}`);
+  return res;
 };

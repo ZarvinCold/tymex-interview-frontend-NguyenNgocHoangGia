@@ -3,13 +3,10 @@ from typing import Optional
 from ..file_ops import read_data, write_data
 from ..data.models import IProduct
 import os
+from .product_utils import get_all_products
 
 router = APIRouter()
 file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'db.json')
-
-def get_all_products():
-    data = read_data(file_path)
-    return data['products']
 
 @router.get("/api/products")
 def list_products(
@@ -18,7 +15,7 @@ def list_products(
     _sort: Optional[str] = Query(None),
     _order: Optional[str] = Query(None),
     _page: Optional[int] = Query(1),
-    _limit: Optional[int] = Query(10)
+    _limit: Optional[int] = Query(12)
 ):
     products = get_all_products()
     # Full-text search
@@ -41,7 +38,16 @@ def list_products(
     # Pagination
     start = (_page - 1) * _limit
     end = start + _limit
-    return products[start:end]
+    paginated = products[start:end]
+    total = len(products)
+    has_next_page = end < total
+    return {
+        "products": paginated,
+        "total": total,
+        "page": _page,
+        "limit": _limit,
+        "hasNextPage": has_next_page
+    }
 
 @router.get("/products/{product_id}")
 def get_product(product_id: int):

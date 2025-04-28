@@ -20,15 +20,19 @@ import {
   StyledBannerText,
 } from "./Banner.styled";
 
+const NFT_CAROUSEL_BANNER = [
+  bannerNFT1,
+  bannerNFT2,
+  bannerNFT3,
+  bannerNFT4,
+]
+
 const Banner = () => {
   return (
     <StyledBannerWrapper banner={banner}>
       <StyledBannerText src={bannerText} alt="" />
       <StyledBannerBottom bannerBottom={bannerBottom}>
-        <StyledBannerNFTImage src={bannerNFT1} alt="" />
-        <StyledBannerNFTImage src={bannerNFT2} alt="" />
-        <StyledBannerNFTImage src={bannerNFT3} alt="" />
-        <StyledBannerNFTImage src={bannerNFT4} alt="" />
+        {NFT_CAROUSEL_BANNER.map(item => <StyledBannerNFTImage key={item} src={item} />)}
         <StyledBannerMainWrapper>
           <StyledBannerMainImage src={bannerMain} alt="" />
           <StyledBannerTextBackground
@@ -38,7 +42,6 @@ const Banner = () => {
           </StyledBannerTextBackground>
         </StyledBannerMainWrapper>
       </StyledBannerBottom>
-      {/* <img src={bannerBottom} alt="" /> */}
     </StyledBannerWrapper>
   );
 };

@@ -28,3 +28,18 @@ export interface IAuthor {
   avatar: string;
   onlineStatus: string;
 }
+
+export interface Pageable<T> {
+	readonly products: T[];
+	/**
+	 * current page number
+	 */
+	readonly page: number;
+
+	/**
+	 * items per page.
+	 */
+	readonly size: number;
+	readonly totalElements: number;
+	readonly totalPages: number;
+}

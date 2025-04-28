@@ -69,11 +69,16 @@ export const TransparentInput = styled(Input)`
 
 export const TransparentSelect = styled(Select)<SelectProps>`
   background: transparent;
+  width: 100%;
+  
   &&& {
     .ant-select-selector {
       background: transparent;
       border: 1px solid rgba(58, 56, 65, 1);
       color: #fff;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      
       .ant-select-selection-item {
         color: #fff;
       }
