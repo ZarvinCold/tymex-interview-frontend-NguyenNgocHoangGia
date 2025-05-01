@@ -1,3 +1,4 @@
+import HeartFilled from "@ant-design/icons/lib/icons/HeartFilled";
 import { StyledMPFLex } from "components/components.styled";
 import styled from "styled-components";
 
@@ -108,4 +109,8 @@ export const StyledCardCreatorName = styled.span`
   font-size: ${({ theme }) => theme.typography.small};
   font-weight: ${({ theme }) => theme.typography.weightMedium};
   color: ${({ theme }) => theme.colors.textLight};
+`;
+
+export const StyledFavoritedIcon = styled(HeartFilled)<{ $isLiked?: boolean }>`
+  color: ${({ $isLiked }) => ($isLiked ? "#FF3B30" : "#fff")};
 `;

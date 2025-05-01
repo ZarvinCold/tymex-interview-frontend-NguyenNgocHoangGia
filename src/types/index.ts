@@ -30,16 +30,16 @@ export interface IAuthor {
 }
 
 export interface Pageable<T> {
-	readonly products: T[];
-	/**
-	 * current page number
-	 */
-	readonly page: number;
+  readonly products: T[];
+  /**
+   * current page number
+   */
+  readonly page: number;
 
-	/**
-	 * items per page.
-	 */
-	readonly size: number;
-	readonly totalElements: number;
-	readonly totalPages: number;
+  /**
+   * items per page.
+   */
+  readonly size: number;
+  readonly totalItems: number;
+  readonly totalPages: number;
 }

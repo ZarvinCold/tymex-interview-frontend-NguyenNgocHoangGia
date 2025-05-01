@@ -17,6 +17,13 @@ export const StyledFooterTop = styled.div`
   justify-content: space-between;
   margin: 0 auto;
   gap: 48px;
+
+  @media (max-width: 1400px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+    
   @media (max-width: 900px) {
     flex-direction: column;
     align-items: center;

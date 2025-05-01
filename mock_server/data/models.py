@@ -22,3 +22,12 @@ class IProduct(BaseModel):
     tier: Literal["Basic", "Premium", "Deluxe"]
     imageId: int
     author: IAuthor
+
+class IProductSearchParams(BaseModel):
+    search: str = ""
+    price: list[float] = [0, 100]
+    tier: str = ""
+    theme: str = ""
+    time: str = ""
+    priceSort: str = ""
+    category: str = ""
