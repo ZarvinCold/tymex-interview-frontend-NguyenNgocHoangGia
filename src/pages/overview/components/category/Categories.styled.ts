@@ -1,7 +1,7 @@
 import { Tag } from "antd";
 import { styled } from "styled-components";
 
-export const StyledTag = styled(Tag)<{ $selected: boolean }>`
+export const StyledCategory = styled(Tag)<{ $selected: boolean }>`
   background: linear-gradient(
     91.47deg,
     rgba(218, 69, 143, ${({ $selected }) => ($selected ? 1 : 0.5)}) -6%,
@@ -19,7 +19,7 @@ export const StyledTag = styled(Tag)<{ $selected: boolean }>`
   margin-right: 0;
 `;
 
-export const StyledTagListWrapper = styled.div`
+export const StyledCategoriesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 20px;

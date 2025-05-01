@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from mock_server.api import products
+from mock_server.api import products, filters
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -13,3 +13,4 @@ app.add_middleware(
 )
 
 app.include_router(products.router)
+app.include_router(filters.router)

@@ -11,6 +11,7 @@ import {
   StyledCardCreatorRow,
   StyledCardAvatar,
   StyledCardCreatorName,
+  StyledFavoritedIcon,
 } from "./Card.styled";
 
 import ethereumIcon from "assets/logos_ethereum.svg";
@@ -40,16 +41,13 @@ const Card: React.FC<CardProps> = ({
   creatorAvatar,
   liked,
 }) => {
-  
   return (
     <StyledCardWrapper>
       <StyledCardImage>
         <StyledCardPicture src={getNFTCharacterImage(imageId)} alt={title} />
         <StyledCardCategory>{category}</StyledCardCategory>
         <StyledCardLike>
-          <span role="img" aria-label="like">
-            {liked ? "❤️" : "🤍"}
-          </span>
+          <StyledFavoritedIcon $isLiked={liked} />
         </StyledCardLike>
       </StyledCardImage>
       <StyledCardContent>

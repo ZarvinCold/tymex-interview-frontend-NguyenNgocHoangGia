@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import { SearchOutlined, ReloadOutlined } from "@ant-design/icons";
 import {
@@ -10,23 +10,27 @@ import {
   TransparentInput,
   TransparentSelect,
 } from "./SearchFilterSection.styled";
-import { useSearchFilterStore } from "../../store/useSearchFilterStore";
+import { useStore } from "store/useStore";
 import TierSelect from "./TierSelect";
 import ThemeSelect from "./ThemeSelect";
+import { useProductsQuery } from "../../useProductsQuery";
+import { useCategoriesQuery } from "../category/useCategoriesQuery";
 
 const { Option } = TransparentSelect;
 
 const SearchFilterSection: React.FC = () => {
-  const search = useSearchFilterStore((state) => state.search);
+  const { search, price, priceSort, time } = useStore(
+    (state) => state.searchOptions,
+  );
+  const setOptions = useStore((state) => state.setOptions);
+  const handleReset = useStore((state) => state.reset);
+  const { refetch: refetchProducts } = useProductsQuery();
+  const { refetch: refetchCategories } = useCategoriesQuery();
 
-  const price = useSearchFilterStore((state) => state.price);
-
-  const time = useSearchFilterStore((state) => state.time);
-
-  const priceSort = useSearchFilterStore((state) => state.priceSort);
-
-  const setOptions = useSearchFilterStore((state) => state.setOptions);
-  const handleReset = useSearchFilterStore((state) => state.reset);
+  const handleSubmit = useCallback(() => {
+    refetchProducts();
+    refetchCategories();
+  }, [refetchProducts, refetchCategories]);
 
   return (
     <SectionWrapper>
@@ -35,7 +39,7 @@ const SearchFilterSection: React.FC = () => {
           placeholder="Search..."
           prefix={<SearchOutlined />}
           value={search}
-          onChange={(e) => setOptions({search: e.target.value})}
+          onChange={(e) => setOptions({ search: e.target.value })}
         />
       </div>
 
@@ -46,19 +50,19 @@ const SearchFilterSection: React.FC = () => {
           min={0}
           max={100}
           value={price}
-          onChange={(price) => setOptions({price})}
+          onChange={(price) => setOptions({ price })}
         />
       </div>
 
       <TierSelect />
       <ThemeSelect />
-      
+
       <div>
         <Label>Time</Label>
         <TransparentSelect
           placeholder="Select time"
           value={time}
-          onChange={(time) => setOptions({time})}
+          onChange={(time) => setOptions({ time })}
         >
           <Option value="">All</Option>
           <Option value="24h">Last 24 hours</Option>
@@ -71,7 +75,7 @@ const SearchFilterSection: React.FC = () => {
         <TransparentSelect
           placeholder="Sort by price"
           value={priceSort}
-          onChange={(priceSort) => setOptions({priceSort})}
+          onChange={(priceSort) => setOptions({ priceSort })}
         >
           <Option value="">None</Option>
           <Option value="asc">Low to High</Option>
@@ -82,7 +86,9 @@ const SearchFilterSection: React.FC = () => {
         <GradientButton icon={<ReloadOutlined />} onClick={handleReset}>
           Reset
         </GradientButton>
-        <GradientButton type="primary">Search</GradientButton>
+        <GradientButton type="primary" onClick={handleSubmit}>
+          Search
+        </GradientButton>
       </ButtonRow>
     </SectionWrapper>
   );

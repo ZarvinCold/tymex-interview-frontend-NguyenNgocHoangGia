@@ -35,6 +35,17 @@ export const SectionWrapper = styled.div`
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   width: 100%;
   max-width: 380px;
+
+  @media (max-width: 1200px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: none;
+
+    & > div {
+      width: 20%;
+    }
+  }
 `;
 
 export const Label = styled.div`
@@ -52,9 +63,13 @@ export const ButtonRow = styled.div`
 `;
 
 export const TransparentInput = styled(Input)`
-  background: transparent;
-  border: 1px solid rgba(137, 136, 139, 1);
-  padding: 8px 12px;
+  &&& {
+    background: transparent;
+    border: 1px solid rgba(137, 136, 139, 1);
+    padding: 10px 12px;
+    color: rgba(137, 136, 139, 1);
+  }
+
   input {
     background: transparent;
     color: #fff;
@@ -70,21 +85,24 @@ export const TransparentInput = styled(Input)`
 export const TransparentSelect = styled(Select)<SelectProps>`
   background: transparent;
   width: 100%;
-  
+  height: 44px;
+
   &&& {
     .ant-select-selector {
       background: transparent;
       border: 1px solid rgba(58, 56, 65, 1);
       color: #fff;
-      padding-top: 8px;
-      padding-bottom: 8px;
-      
+
       .ant-select-selection-item {
         color: #fff;
       }
       .ant-select-selection-placeholder {
         color: rgba(137, 136, 139, 1);
       }
+    }
+
+    .ant-select-arrow {
+      color: #fff;
     }
   }
 `;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { StyledMPText } from "../components.styled";
 
-export const StyledBannerWrapper = styled.div<{ banner: string }>`
+export const StyledBannerWrapper = styled.div<{ $banner: string }>`
   width: 100%;
   height: 800px;
   position: relative;
-  background: url(${(props) => props.banner}) center/cover no-repeat;
+  background: url(${(props) => props.$banner}) center/cover no-repeat;
 
   &::before {
     content: "";
@@ -27,8 +27,8 @@ export const StyledBannerTitle = styled.h1`
   margin: 0;
 `;
 
-export const StyledBannerBottom = styled.div<{ bannerBottom: string }>`
-  background: url(${(props) => props.bannerBottom}) center/contain repeat;
+export const StyledBannerBottom = styled.div<{ $bannerBottom: string }>`
+  background: url(${(props) => props.$bannerBottom}) center/contain repeat;
   background-size: auto 100%;
   position: absolute;
   bottom: 0;
@@ -42,41 +42,69 @@ export const StyledBannerBottom = styled.div<{ bannerBottom: string }>`
 
 export const StyledBannerNFTImage = styled.img`
   height: 224px;
+  scroll-snap-align: start;
 `;
 
 export const StyledBannerMainWrapper = styled.div`
-  width: min(35%, 500px);
+  width: min(100%, 500px);
   height: 100%;
   position: relative;
 `;
 
 export const StyledBannerMainImage = styled.img`
+  width: 100%;
   position: absolute;
   bottom: 0;
   right: 0;
+
+  @media (max-width: 1100px) {
+    bottom: 36px;
+    right: 36px;
+    transform: scale(1.5);
+  }
 `;
 
 export const StyledBannerTextBackground = styled.div<{
-  bannerTextBackground: string;
+  $bannerTextBackground: string;
 }>`
-  background: url(${(props) => props.bannerTextBackground}) center/contain
+  width: 100%;
+  height: 100%;
+  background: url(${(props) => props.$bannerTextBackground}) center/contain
     no-repeat;
   position: absolute;
-  padding: 60px 120px;
   text-align: center;
   bottom: 0px;
   right: -24px;
 `;
 
 export const StyledBannerMainText = styled(StyledMPText)`
+  position: absolute;
   font-weight: ${({ theme }) => theme.typography.weightSemiBold};
-  display: inline-block;
-  font-size: 72px;
-  transform: translate(-60px, -6px);
+  font-size: 5vw;
+  width: 90%;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
 `;
 
 export const StyledBannerText = styled.img`
+  width: 100%;
   position: absolute;
-  top: 18%;
-  left: 10%;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding-left: 10%;
+  padding-right: 40%;
+`;
+
+export const StyledCarouselWrapper = styled.div`
+  max-width: 70%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow-x: auto;
+  gap: 16px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
 `;

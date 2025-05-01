@@ -18,25 +18,25 @@ import {
   StyledBannerTextBackground,
   StyledBannerMainText,
   StyledBannerText,
+  StyledCarouselWrapper,
 } from "./Banner.styled";
 
-const NFT_CAROUSEL_BANNER = [
-  bannerNFT1,
-  bannerNFT2,
-  bannerNFT3,
-  bannerNFT4,
-]
+const NFT_CAROUSEL_BANNER = [bannerNFT1, bannerNFT2, bannerNFT3, bannerNFT4];
 
 const Banner = () => {
   return (
-    <StyledBannerWrapper banner={banner}>
+    <StyledBannerWrapper $banner={banner}>
       <StyledBannerText src={bannerText} alt="" />
-      <StyledBannerBottom bannerBottom={bannerBottom}>
-        {NFT_CAROUSEL_BANNER.map(item => <StyledBannerNFTImage key={item} src={item} />)}
+      <StyledBannerBottom $bannerBottom={bannerBottom}>
+        <StyledCarouselWrapper>
+          {NFT_CAROUSEL_BANNER.map((item) => (
+            <StyledBannerNFTImage key={item} src={item} />
+          ))}
+        </StyledCarouselWrapper>
         <StyledBannerMainWrapper>
           <StyledBannerMainImage src={bannerMain} alt="" />
           <StyledBannerTextBackground
-            bannerTextBackground={bannerTextBackground}
+            $bannerTextBackground={bannerTextBackground}
           >
             <StyledBannerMainText>THE DJ</StyledBannerMainText>
           </StyledBannerTextBackground>

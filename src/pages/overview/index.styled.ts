@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
 export const StyledOverviewPageWrapper = styled.div<{
-  background: string;
-  bottomBackground: string;
+  $background: string;
+  $bottomBackground: string;
 }>`
-  background: url(${(props) => props.background}) center/cover no-repeat;
+  background: url(${(props) => props.$background}) center/cover repeat;
   width: 100%;
   height: 100%;
   min-height: 100vh;
@@ -22,10 +22,14 @@ export const StyledOverviewPageWrapper = styled.div<{
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(${(props) => props.bottomBackground}) center/contain
+    background: url(${(props) => props.$bottomBackground}) center/contain
       no-repeat;
     background-position: bottom;
     z-index: -1;
+  }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
   }
 `;
 
