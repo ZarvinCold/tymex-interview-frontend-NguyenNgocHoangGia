@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from mock_server.api import products, filters
+from .api import products, filters
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
