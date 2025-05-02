@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchThemes } from "services/filter";
 import { useStore } from "store/useStore";

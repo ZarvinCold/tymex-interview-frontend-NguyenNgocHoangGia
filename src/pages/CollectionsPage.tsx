@@ -1,4 +1,3 @@
-import React from "react";
 import { Card, GradientButton, StyledMPFLex } from "components";
 import { StyledCardsWrapper } from "pages/overview/index.styled";
 import { useInfiniteQuery } from "@tanstack/react-query";
