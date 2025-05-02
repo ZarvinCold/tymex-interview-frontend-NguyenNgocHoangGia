@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from .product_utils import get_all_products
+from api.product_utils import get_all_products
 
 router = APIRouter()
 

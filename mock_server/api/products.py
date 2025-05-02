@@ -1,9 +1,9 @@
 from fastapi import APIRouter, HTTPException, Query, Body
 from typing import Optional
-from ..file_ops import read_data, write_data
-from ..data.models import IProduct, IProductSearchParams
+from file_ops import read_data, write_data
+from data.models import IProduct, IProductSearchParams
 import os
-from .product_utils import get_all_products
+from api.product_utils import get_all_products
 
 router = APIRouter()
 file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'db.json')

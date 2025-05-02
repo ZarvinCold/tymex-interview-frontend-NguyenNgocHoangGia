@@ -1,5 +1,5 @@
 import os
-from ..file_ops import read_data
+from file_ops import read_data
 
 file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'db.json')
 

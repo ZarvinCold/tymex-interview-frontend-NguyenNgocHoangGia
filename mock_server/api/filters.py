@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body
 from fastapi.responses import JSONResponse
-from .product_utils import get_all_products, filter_products
-from ..data.models import IProductSearchParams
+from api.product_utils import get_all_products, filter_products
+from data.models import IProductSearchParams
 
 router = APIRouter()
 
