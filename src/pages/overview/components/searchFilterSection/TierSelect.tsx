@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { fetchTiers } from "services/filter";
 import { Label, TransparentSelect } from "./SearchFilterSection.styled";
 import { useQuery } from "@tanstack/react-query";
