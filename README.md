@@ -1,54 +1,113 @@
-# React + TypeScript + Vite
+# TymeX Marketplace
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application for NFT marketplace, featuring a React + Vite frontend and a FastAPI backend. This project is designed for rapid development, modern UI/UX. 
 
-Currently, two official plugins are available:
+#### https://tymex-marketplace-fe-nnhg.onrender.com/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Table of Contents
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Development Workflow](#development-workflow)
+- [Environment Variables](#environment-variables)
+- [Usage](#usage)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+## Features
+- **Frontend:** React 18, Vite, TypeScript, modern component structure, HMR, ESLint, Prettier
+- **Backend:** FastAPI, Python 3, RESTful API, mock data
+- **Proxy/API Routing:** Vite dev server proxies `/api` to backend
+- **Deployment:** Render
+- **Testing:** Cypress, Jest
+
+---
+
+## Project Structure
+```
+├── mock_server/           # FastAPI backend
+│   ├── api/               # API endpoints (categories, filters, products)
+│   ├── data/              # Mock database and models
+│   ├── main.py            # FastAPI app entrypoint
+│   ├── requirements.txt   # Python dependencies
+│   ├── fly.toml           # Render/Deploy config
+│   └── render.yaml        # Render deploy config
+├── src/                   # React frontend source
+│   ├── assets/            # Images, SVGs, static assets
+│   ├── components/        # Reusable UI components
+│   ├── context/           # React context providers
+│   ├── pages/             # Page-level components
+│   ├── services/          # API clients, business logic
+│   ├── store/             # State management
+│   ├── tests/             # Frontend tests
+│   ├── types/             # TypeScript types
+│   ├── App.tsx            # Main app component
+│   └── main.tsx           # Entry point
+├── public/                # Static public assets
+├── index.html             # HTML template
+├── vite.config.ts         # Vite config (with aliases, proxy)
+├── netlify.toml           # Netlify deployment config
+├── package.json           # Frontend dependencies/scripts
+├── tsconfig.json          # TypeScript config
+├── .env                   # Environment variables
+├── .gitignore             # Git ignore rules
+└── README.md              # This file
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
+## Getting Started
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    "react-x": reactX,
-    "react-dom": reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs["recommended-typescript"].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+### Prerequisites
+- Node.js (v16+ recommended)
+- npm (v8+ recommended)
+- Python 3.8+
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/ZarvinCold/tymex-interview-frontend-NguyenNgocHoangGia.git
 ```
+
+### 2. Install Frontend Dependencies
+```bash
+npm install
+```
+
+### 3. Install Backend Dependencies
+```bash
+cd mock_server
+pip3 install -r requirements.txt
+```
+
+---
+
+## Development Workflow
+
+### Start Backend (FastAPI)
+```bash
+cd mock_server
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+- API will be available at `http://localhost:8000`
+
+### Start Frontend (Vite + React)
+```bash
+cd ..
+npm run dev
+```
+- App will be available at `http://localhost:5173` (default)
+- API requests to `/api` are proxied to backend (see `vite.config.ts`)
+
+---
+
+## Usage
+https://tymex-marketplace-fe-nnhg.onrender.com/
+
+---
+
+### Code Style
+- Use Prettier and ESLint (see `.prettierrc`, `eslint.config.js`)
+- TypeScript for all frontend code
+
