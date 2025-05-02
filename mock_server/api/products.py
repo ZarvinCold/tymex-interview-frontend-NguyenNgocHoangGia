@@ -8,25 +8,6 @@ from api.product_utils import get_all_products
 router = APIRouter()
 file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'db.json')
 
-@router.get("/products/{product_id}")
-def get_product(product_id: int):
-    products = get_all_products()
-    for product in products:
-        if product['id'] == product_id:
-            return product
-    raise HTTPException(status_code=404, detail="Product not found")
-
-# @router.post("/api/products")
-# def create_product(product: IProduct):
-#     data = read_data('./data/db.json')
-#     products = data['products']
-#     new_id = max([p['id'] for p in products], default=0) + 1
-#     product_dict = product.dict()
-#     product_dict['id'] = new_id
-#     products.append(product_dict)
-#     write_data('../data/db.json', data)
-#     return product_dict
-
 @router.put("/api/products/{product_id}")
 def update_product(product_id: int, product: IProduct):
     data = read_data('./data/db.json')
