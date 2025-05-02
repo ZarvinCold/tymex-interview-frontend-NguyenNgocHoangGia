@@ -7,11 +7,13 @@ export const useProductsQuery = () => {
   const category = useStore((state) => state.searchOptions.category);
   return useInfiniteQuery<ProductResponse>({
     queryKey: ["products", category],
-    queryFn: () => fetchProducts({ searchOptions }),
+    queryFn: ({ pageParam }) =>
+      fetchProducts({ searchOptions, pageParam: pageParam as number }),
     initialPageParam: 1,
-    getNextPageParam: (lastPage, allPages) => {
-      if (lastPage.page === lastPage.totalPages) return undefined;
-      return allPages.length + 1;
+    getNextPageParam: (lastPage) => {
+      const nextPage = lastPage.page + 1;
+      const hasMore = lastPage.page < lastPage.totalPages;
+      return hasMore ? nextPage : undefined;
     },
     staleTime: Infinity,
   });
