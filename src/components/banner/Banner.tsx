@@ -1,4 +1,3 @@
-
 import banner from "assets/banner/banner.jpg";
 import bannerBottom from "assets/banner/banner-bottom.png";
 import bannerText from "assets/banner/banner-text.svg";

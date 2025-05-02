@@ -46,7 +46,7 @@ export const StyledBannerNFTImage = styled.img`
 `;
 
 export const StyledBannerMainWrapper = styled.div`
-  width: min(100%, 500px);
+  width: 500px;
   height: 100%;
   position: relative;
 `;
@@ -56,12 +56,6 @@ export const StyledBannerMainImage = styled.img`
   position: absolute;
   bottom: 0;
   right: 0;
-
-  @media (max-width: 1100px) {
-    bottom: 36px;
-    right: 36px;
-    transform: scale(1.5);
-  }
 `;
 
 export const StyledBannerTextBackground = styled.div<{
@@ -80,7 +74,7 @@ export const StyledBannerTextBackground = styled.div<{
 export const StyledBannerMainText = styled(StyledMPText)`
   position: absolute;
   font-weight: ${({ theme }) => theme.typography.weightSemiBold};
-  font-size: 5vw;
+  font-size: 72px;
   width: 90%;
   top: 50%;
   transform: translateY(-50%);
@@ -98,7 +92,7 @@ export const StyledBannerText = styled.img`
 `;
 
 export const StyledCarouselWrapper = styled.div`
-  max-width: 70%;
+  max-width: calc(100% - 500px);
   height: 100%;
   display: flex;
   align-items: center;

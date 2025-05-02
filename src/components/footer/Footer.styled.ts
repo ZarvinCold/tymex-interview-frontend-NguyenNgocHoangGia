@@ -20,13 +20,11 @@ export const StyledFooterTop = styled.div`
 
   @media (max-width: 1400px) {
     flex-direction: column;
-    align-items: center;
     gap: 32px;
   }
-    
+
   @media (max-width: 900px) {
     flex-direction: column;
-    align-items: center;
     gap: 32px;
   }
 `;
@@ -36,9 +34,10 @@ export const StyledFooterNavColumn = styled.div`
   flex-direction: column;
   gap: 16px;
   min-width: 180px;
+
   @media (max-width: 900px) {
-    align-items: center;
     min-width: unset;
+    justify-content: space-between;
   }
 `;
 
@@ -162,11 +161,10 @@ export const StyledFooterNav = styled.div`
   display: flex;
   text-align: left;
 `;
+
 export const StyledFooterContact = styled.div`
   display: flex;
   flex-direction: column;
   gap: 36px;
   text-align: left;
 `;
-export const StyledFooterContactIcon = styled.div``;
-export const StyledFooterBottom = styled.div``;
