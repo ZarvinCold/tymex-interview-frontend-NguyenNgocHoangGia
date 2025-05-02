@@ -16,6 +16,11 @@ import {
 
 import ethereumIcon from "assets/logos_ethereum.svg";
 import { StyledMPFLex } from "components/components.styled";
+import NFTCharacter1 from "assets/NFT-character-1.png";
+import NFTCharacter2 from "assets/NFT-character-2.png";
+import NFTCharacter3 from "assets/NFT-character-3.png";
+import NFTCharacter4 from "assets/NFT-character-4.png";
+import NFTCharacter5 from "assets/NFT-character-5.png";
 
 export interface CardProps {
   imageId: number;
@@ -27,9 +32,17 @@ export interface CardProps {
   liked?: boolean;
 }
 
+const nftImages = [
+  NFTCharacter1,
+  NFTCharacter2,
+  NFTCharacter3,
+  NFTCharacter4,
+  NFTCharacter5,
+];
+
 const getNFTCharacterImage = (imageId: number) => {
-  const nftImageIndex = ((imageId - 1) % 5) + 1;
-  return `/src/assets/NFT-character-${nftImageIndex}.png`;
+  const nftImageIndex = (imageId - 1) % 5;
+  return nftImages[nftImageIndex];
 };
 
 const Card: React.FC<CardProps> = ({

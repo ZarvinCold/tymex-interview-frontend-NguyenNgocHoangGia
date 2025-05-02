@@ -1,10 +1,13 @@
 import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
 import {
   StyledHeaderWrapper,
-  StyledHeaderNav,
+  StyledHeaderNavWeb,
   StyledHeaderNavItem,
   StyledHeaderActions,
   StyledHeaderButton,
+  StyledHamburger,
+  StyledHeaderNavResponsive,
 } from "./Header.styled";
 
 const navItems = [
@@ -16,10 +19,15 @@ const navItems = [
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <StyledHeaderWrapper>
-      <StyledHeaderNav>
+      <StyledHamburger onClick={() => setMenuOpen((open) => !open)}>
+        <span className={menuOpen ? "open" : ""}></span>
+        <span className={menuOpen ? "open" : ""}></span>
+        <span className={menuOpen ? "open" : ""}></span>
+      </StyledHamburger>
+      <StyledHeaderNavWeb className={menuOpen ? "hide-on-mobile" : ""}>
         {navItems.map((item) => (
           <StyledHeaderNavItem
             key={item.label}
@@ -28,13 +36,31 @@ export default function Header() {
             onClick={(e) => {
               e.preventDefault();
               navigate(item.href);
+              setMenuOpen(false);
             }}
             href={item.href}
           >
             {item.label}
           </StyledHeaderNavItem>
         ))}
-      </StyledHeaderNav>
+      </StyledHeaderNavWeb>
+      <StyledHeaderNavResponsive className={menuOpen ? "open" : ""}>
+        {navItems.map((item) => (
+          <StyledHeaderNavItem
+            key={item.label}
+            as="a"
+            className={location.pathname === item.href ? "selected" : ""}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(item.href);
+              setMenuOpen(false);
+            }}
+            href={item.href}
+          >
+            {item.label}
+          </StyledHeaderNavItem>
+        ))}
+      </StyledHeaderNavResponsive>
       <StyledHeaderActions>
         <StyledHeaderButton>Connect Wallet</StyledHeaderButton>
       </StyledHeaderActions>
